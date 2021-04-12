@@ -3,9 +3,9 @@ import 'dotenv/config';
 import express from 'express';
 import routes from './routes';
 
-class App {
-  public server;
+import './database';
 
+class App {
   constructor() {
     this.server = express();
     this.middlewares();
