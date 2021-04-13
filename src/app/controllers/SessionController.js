@@ -16,31 +16,19 @@ class SessionController {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name } = user;
+    return res.json(await this.getToken(user));
+  }
 
-    return res.json({
+  async getToken(user) {
+    const { id, name, email } = user;
+
+    return {
       user: {
         id,
         name,
         email
       },
       token: jwt.sign({ id }, authConfig.secret, {
-        expiresIn: authConfig.expiresIn,
-      }),
-    });
-  }
-
-  async storeByUser(user) {
-    const { uid, name, email, url_photo } = user;
-
-    return {
-      user: {
-        uid,
-        name,
-        email,
-        url_photo,
-      },
-      token: jwt.sign({ uid }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
     };

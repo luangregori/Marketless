@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import User from '../models/User';
+import SessionController from './SessionController';
 
 class UserController {
   async store(req, res) {
@@ -19,9 +20,9 @@ class UserController {
       return res.status(400).json({ error: 'User already exists.' });
     }
 
-    const { id, name, email } = await User.create(req.body);
+    const user = await User.create(req.body);
 
-    return res.json({ id, name, email });
+    return res.json(await SessionController.getToken(user));
   }
 
   async update(req, res) {
