@@ -14,7 +14,7 @@ class UserController {
       return res.status(400).json({ error: 'Invalid argument' });
     }
 
-    const userExists = await User.findOne({ where: { email: req.body.email }});
+    const userExists = await User.findOne({ where: { email: req.body.email } });
 
     if (userExists) {
       return res.status(400).json({ error: 'User already exists.' });
@@ -32,32 +32,32 @@ class UserController {
       oldPassword: Yup.string().min(6),
       password: Yup.string()
         .min(6)
-        .when('oldPassword', (oldPassword, field) => {
-          oldPassword ? field.required : field
-        }),
+        .when('oldPassword', (oldPassword, field) =>
+          oldPassword ? field.required() : field
+        ),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Invalid argument' });
     }
 
-    const { email, oldPassword }= req.body;
+    const { email, oldPassword } = req.body;
 
     const user = await User.findByPk(req.userId);
 
-    if (email && (email !== user.email)){
-      const userExists = await User.findOne({ where: { email }});
+    if (email && email !== user.email) {
+      const userExists = await User.findOne({ where: { email } });
 
       if (userExists) {
         return res.status(400).json({ error: 'User already exists.' });
       }
     }
 
-    if (oldPassword && ! (await user.checkPassword(oldPassword))) {
+    if (oldPassword && !(await user.checkPassword(oldPassword))) {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name } = await user.update(req.body)
+    const { id, name } = await user.update(req.body);
 
     return res.json({ id, name, email });
   }

@@ -12,7 +12,7 @@ class SessionController {
       return res.status(401).json({ error: 'User not found' });
     }
 
-    if (!(await user.checkPassword(password))){
+    if (!(await user.checkPassword(password))) {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
@@ -26,7 +26,7 @@ class SessionController {
       user: {
         id,
         name,
-        email
+        email,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
