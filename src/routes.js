@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
+import MarketController from './app/controllers/MarketController';
+import ProductController from './app/controllers/ProductController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -24,5 +26,15 @@ routes.post(
 routes.use(authMiddleware);
 
 routes.put(`${contextPath}/users`, UserController.update.bind(UserController));
+
+routes.get(
+  `${contextPath}/markets`,
+  MarketController.get.bind(MarketController)
+);
+
+routes.get(
+  `${contextPath}/products`,
+  ProductController.get.bind(ProductController)
+);
 
 export default routes;

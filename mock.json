@@ -1,0 +1,71 @@
+{
+  "markets":[
+    {
+      "marketId": 1,
+      "nome": "Supermercado 1",
+      "photo_url": "url_photo",
+      "address": "Rua 1",
+      "resume": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "marketId": 2,
+      "nome": "Supermercado 2",
+      "photo_url": "url_photo",
+      "address": "Rua 2, ",
+      "resume": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "marketId": 3,
+      "nome": "Supermercado 3",
+      "photo_url": "url_photo",
+      "address": "Rua da rua",
+      "resume": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ],
+
+  "products": [
+    {
+      "categoryId": 1,
+      "category_name":"Bebidas",
+      "products": [
+        {
+          "productId": 1,
+          "resume":"Coca Cola 600ml", 
+          "photo": "url_photo", 
+          "value": 2.5
+        },
+        {
+          "productId": 2,
+          "resume":"Coca Cola 2L", 
+          "photo": "url_photo", 
+          "value": 7
+        },
+        {
+          "productId": 3,
+          "resume":"Sukita 2L", 
+          "photo": "url_photo", 
+          "value": 4
+        }
+      ]
+    },
+    {
+      "categoryId": 2,
+      "category_name":"Alimentação",
+      "products": [
+        {
+          "productId": 4,
+          "resume":"Arroz 5kg", 
+          "photo": "url_photo", 
+          "value": 15
+        },
+        {
+          "productId": 5,
+          "resume":"Feijão 1kg", 
+          "photo": "url_photo", 
+          "value": 7
+        }
+      ]
+    }
+  ]
+}
+
